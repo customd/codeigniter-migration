@@ -75,7 +75,7 @@ class Migrate extends CI_Controller
 		if( is_null( $version ) ) $this->_show_message( 'Please specify a valid migration version.' );
 		
 		// Set the 'current' version from the config file.
-		if( $version == 'current' ) $version = $this->_config_version;
+		if( $version == 'current' ) $version = $this->_config_version();
 		
 		if( $version == $this->_get_version() )
 		{
