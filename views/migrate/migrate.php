@@ -65,7 +65,7 @@ input {
 		<form method="POST" action="#" id="goto">
 			<p>
 				<label for="version">Migrate to version</label>:
-				<input type="number" id="version" onchange="document.getElementById('goto').setAttribute('action','<?php echo site_url('/migrate/to/'); ?>'+this.value+'/');"/>
+				<input type="number" id="version" onchange="document.getElementById('goto').setAttribute('action','<?php echo site_url('/migrate/to/'); ?>/'+this.value+'/');"/>
 				<input type="submit" value="Go"/>
 			</p>
 		</form>
