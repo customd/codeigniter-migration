@@ -65,24 +65,24 @@ input {
 		<form method="POST" action="#" id="goto">
 			<p>
 				<label for="version">Migrate to version</label>:
-				<input type="number" id="version" onchange="document.getElementById('goto').setAttribute('action','<?php echo site_url('/migrate/to/'); ?>'+this.value+'/');"/>
+				<input type="number" id="version" onchange="document.getElementById('goto').setAttribute('action','<?php echo site_url('/migrate/to/'); ?>/'+this.value+'/');"/>
 				<input type="submit" value="Go"/>
 			</p>
 		</form>
 		
 		<p>
 		<?php if( $current > 0 ){ ?>
-			<a href="<?php echo site_url('/migrate/to/'.($current-1)); ?>" class="prev">Previous</a>&nbsp;|&nbsp;
+			<a href="<?php echo site_url('/migrate/to/'.($current-1)); ?>" title="set to: <?php echo ($current-1); ?>" class="prev">Previous</a>&nbsp;|&nbsp;
 		<?php } else { ?>
 			<span class="prev" title="There are no migrations before this version">Previous</span>&nbsp;|&nbsp;
 		<?php } ?>
 		<?php if( $ideal != $current ){ ?>
-			<a href="<?php echo site_url('/migrate/to/'.$ideal); ?>" class="ideal">Config</a>&nbsp;|&nbsp;
+			<a href="<?php echo site_url('/migrate/to/'.$ideal); ?>" title="set to: <?php echo $ideal; ?>" class="ideal">Config</a>&nbsp;|&nbsp;
 		<?php } else { ?>
 			<span class="ideal" title="The database is alread at this version">Config</span>&nbsp;|&nbsp;
 		<?php } ?>
-		<?php if( true ){ ?>
-			<a href="<?php echo site_url('/migrate/to/'.($current+1)); ?>" class="next">Next</a>
+		<?php if( $ideal > $current ){ ?>
+			<a href="<?php echo site_url('/migrate/to/'.($current+1)); ?>" title="set to: <?php echo ($current+1); ?>" class="next">Next</a>
 		<?php } else { ?>
 			<span class="next" title="There are no migrations beyond this version">Next</span>
 		<?php } ?>

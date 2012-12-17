@@ -81,6 +81,13 @@ class Migrate extends CI_Controller
 		{
 			return $this->_show_message( 'The database is already at the selected version.', 200, 'Migration Complete' );
 		}
+
+		// check if version is a positive number
+		// prevent accidentally migration to 0 if version is left blank or is not a integer
+		if($version == '' || ((int)$version).'' !== (string)$version || (int)$version < 0)
+		{  
+			return $this->_show_message( 'No version number set', 500, 'Migration Error' );  
+		}  
 		
 		// If the migration can't be updated to $version.
 		if( !$this->migration->version( $version ) )
